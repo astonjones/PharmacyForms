@@ -1,1 +1,85 @@
-﻿<h1>The patient Count Form should be placed here</h1>
+﻿@model PharmacyForms.Models.PatientCountModel;
+@using System.Security.Principal
+
+<form method="post" asp-action="PatientCountCreate" class="d-flex justify-content-center">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div> <!-- popup for form validation -->
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Patient Count Form</h2>
+            <p>Please fill out the form with the necessary info.</p>
+        </div>
+
+        <!--Start of inputs -->
+        <div>
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="PharmacyName"></label>
+                    <div asp-form="PharmacyName">
+                        <input asp-for="PharmacyName" class="form-control" />
+                        <span asp-validation-for="PharmacyName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="Email"></label>
+                    <div asp-form="Email">
+                        <input asp-for="Email" class="form-control" value=@User.Identity.Name readonly/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="Name"></label>
+                    <div>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-4">
+                    <label asp-for="TimeOfDay"></label>
+                    <select asp-for="TimeOfDay" class="form-control">
+                        <option value="Start Of Day">Start Of Day</option>
+                        <option value="End Of Day">End Of Day</option>
+                    </select>
+                    <span asp-validation-for="TimeOfDay" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="PatientCount"></label>
+                    <div asp-form="PatientCount">
+                        <input asp-for="PatientCount" class="form-control"/>
+                        <span asp-validation-for="PatientCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-8 offset-4 row">
+
+                    <div class="col">
+                        <input type="submit" class="btn btn-info w-100 text-white" value="Submit" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i>Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
