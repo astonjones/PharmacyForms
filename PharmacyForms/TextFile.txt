@@ -1,0 +1,3 @@
+﻿Need to do for app deployment:
+- Copy database over to MySQL server
+- change database connection strings in app to point to MySQL server

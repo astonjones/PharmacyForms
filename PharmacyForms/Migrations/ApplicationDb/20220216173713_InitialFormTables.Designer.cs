@@ -2,111 +2,108 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PharmacyForms.Data;
 
 #nullable disable
 
-namespace PharmacyForms.Data.Migrations
+namespace PharmacyForms.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220210214750_ChangePatientCountId")]
-    partial class ChangePatientCountId
+    [Migration("20220216173713_InitialFormTables")]
+    partial class InitialFormTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.1")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+                .HasAnnotation("ProductVersion", "6.0.2")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("PharmacyForms.Models.EndOfDayModel", b =>
                 {
                     b.Property<double>("Id")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("AlternativeAdjudications")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("AlternativeCogs")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("ApprovedPatientCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("Cogs")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("DeniedPatientCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("EntryDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<double>("ExistingPatientCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<string>("GroupName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<double>("HighCopayCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<decimal>("InsuranceAdjudications")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<double>("InsuranceErrors")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("InsuranceTerminatedCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<double>("NotContractedCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<string>("OtherExceptions")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<double>("PatientExceptionCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("RefillAdjudications")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("RefillCogs")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("RxCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("RxRefills")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("TransferredPatientCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("WrongDOBCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<double>("WrongLastNameCount")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.HasKey("Id");
 
@@ -116,32 +113,32 @@ namespace PharmacyForms.Data.Migrations
             modelBuilder.Entity("PharmacyForms.Models.PatientCountModel", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("EntryDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("PatientCount")
                         .HasColumnType("int");
 
                     b.Property<string>("PharmacyName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("TimeOfDay")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 

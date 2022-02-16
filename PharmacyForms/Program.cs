@@ -1,27 +1,30 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PharmacyForms.Data;
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+var services = builder.Services;
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-var authConnectionString = builder.Configuration.GetConnectionString("PharmacyAuthContextConnection");
-builder.Services.AddDbContext<PharmacyAuthContext>(options => options.UseSqlServer(authConnectionString));
-builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+// ---- Add services to the container. ----
+services.AddDbContext<PharmacyAuthContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+services.AddDbContext<ApplicationDbContext>(options =>options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<PharmacyAuthContext>();
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddControllersWithViews();
+services.AddDatabaseDeveloperPageExceptionFilter();
+
+services.AddControllersWithViews();
+// ----------------------------------------
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-    app.UseMigrationsEndPoint();
+    app.UseHttpsRedirection();
 }
 else
 {
@@ -34,6 +37,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -58,7 +58,6 @@ namespace PharmacyForms.Controllers
             {
                 _db.PatientCounts.Add(obj);
                 _db.SaveChanges();
-                Console.WriteLine("Mdae it through!");
                 return RedirectToAction("Index");
             }
             Console.WriteLine("Error in create route");
@@ -104,6 +103,12 @@ namespace PharmacyForms.Controllers
                 return NotFound();
 
             return View(obj);
+        }
+
+        //GET
+        public IActionResult EndOfDayCreate()
+        {
+            return View();
         }
     }
 }
