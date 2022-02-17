@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PharmacyForms.Migrations.ApplicationDb
 {
-    public partial class InitialFormTables : Migration
+    public partial class AddFormData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,8 @@ namespace PharmacyForms.Migrations.ApplicationDb
                 name: "EndOfDay",
                 columns: table => new
                 {
-                    Id = table.Column<double>(type: "double", nullable: false),
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     EntryDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ModifyDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Email = table.Column<string>(type: "longtext", nullable: false)

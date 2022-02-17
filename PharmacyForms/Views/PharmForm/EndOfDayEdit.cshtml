@@ -1,0 +1,265 @@
+﻿@model PharmacyForms.Models.EndOfDayModel;
+@using System.Security.Principal
+
+<form method="post" asp-action="EndOfDayEdit" class="d-flex justify-content-center">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div> <!-- popup for form validation -->
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Patient Count Form</h2>
+            <p>Please fill out the form with the necessary info.</p>
+        </div>
+
+        <!--Start of inputs -->
+        <input asp-for="EntryDate" class="form-control d-none" readonly/>
+        <div>
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="Email"></label>
+                    <div asp-form="Email">
+                        <input asp-for="Email" class="form-control" value=@User.Identity.Name readonly/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="Name"></label>
+                    <div>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="GroupName"></label>
+                    <div asp-form="GroupName">
+                        <input asp-for="GroupName" class="form-control"/>
+                        <span asp-validation-for="GroupName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="ApprovedPatientCount"></label>
+                    <div asp-form="ApprovedPatientCount">
+                        <input asp-for="ApprovedPatientCount" class="form-control"/>
+                        <span asp-validation-for="ApprovedPatientCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="DeniedPatientCount"></label>
+                    <div asp-form="DeniedPatientCount">
+                        <input asp-for="DeniedPatientCount" class="form-control"/>
+                        <span asp-validation-for="DeniedPatientCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="RxCount"></label>
+                    <div asp-form="RxCount">
+                        <input asp-for="RxCount" class="form-control"/>
+                        <span asp-validation-for="RxCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="HighCopayCount"></label>
+                    <div asp-form="HighCopayCount">
+                        <input asp-for="HighCopayCount" class="form-control"/>
+                        <span asp-validation-for="HighCopayCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="InsuranceErrors"></label>
+                    <div asp-form="InsuranceErrors">
+                        <input asp-for="InsuranceErrors" class="form-control"/>
+                        <span asp-validation-for="InsuranceErrors" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="WrongDOBCount"></label>
+                    <div asp-form="WrongDOBCount">
+                        <input asp-for="WrongDOBCount" class="form-control"/>
+                        <span asp-validation-for="WrongDOBCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="NotContractedCount"></label>
+                    <div asp-form="NotContractedCount">
+                        <input asp-for="NotContractedCount" class="form-control"/>
+                        <span asp-validation-for="NotContractedCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="WrongLastNameCount"></label>
+                    <div asp-form="WrongLastNameCount">
+                        <input asp-for="WrongLastNameCount" class="form-control"/>
+                        <span asp-validation-for="WrongLastNameCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="InsuranceTerminatedCount"></label>
+                    <div asp-form="InsuranceTerminatedCount">
+                        <input asp-for="InsuranceTerminatedCount" class="form-control"/>
+                        <span asp-validation-for="InsuranceTerminatedCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="OtherExceptions"></label>
+                    <div asp-form="OtherExceptions">
+                        <input asp-for="OtherExceptions" class="form-control"/>
+                        <span asp-validation-for="OtherExceptions" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="InsuranceAdjudications"></label>
+                    <div asp-form="InsuranceAdjudications">
+                        <input asp-for="InsuranceAdjudications" class="form-control"/>
+                        <span asp-validation-for="InsuranceAdjudications" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="Cogs"></label>
+                    <div asp-form="Cogs">
+                        <input asp-for="Cogs" class="form-control"/>
+                        <span asp-validation-for="Cogs" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="RxRefills"></label>
+                    <div asp-form="RxRefills">
+                        <input asp-for="RxRefills" class="form-control"/>
+                        <span asp-validation-for="RxRefills" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="RefillAdjudications"></label>
+                    <div asp-form="RefillAdjudications">
+                        <input asp-for="RefillAdjudications" class="form-control"/>
+                        <span asp-validation-for="RefillAdjudications" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="RefillCogs"></label>
+                    <div asp-form="RefillCogs">
+                        <input asp-for="RefillCogs" class="form-control"/>
+                        <span asp-validation-for="RefillCogs" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="AlternativeAdjudications"></label>
+                    <div asp-form="AlternativeAdjudications">
+                        <input asp-for="AlternativeAdjudications" class="form-control"/>
+                        <span asp-validation-for="AlternativeAdjudications" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="AlternativeCogs"></label>
+                    <div asp-form="AlternativeCogs">
+                        <input asp-for="AlternativeCogs" class="form-control"/>
+                        <span asp-validation-for="AlternativeCogs" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="PatientExceptionCount"></label>
+                    <div asp-form="PatientExceptionCount">
+                        <input asp-for="PatientExceptionCount" class="form-control"/>
+                        <span asp-validation-for="PatientExceptionCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="ExistingPatientCount"></label>
+                    <div asp-form="ExistingPatientCount">
+                        <input asp-for="ExistingPatientCount" class="form-control"/>
+                        <span asp-validation-for="ExistingPatientCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="TransferredPatientCount"></label>
+                    <div asp-form="TransferredPatientCount">
+                        <input asp-for="TransferredPatientCount" class="form-control"/>
+                        <span asp-validation-for="TransferredPatientCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-8 offset-4 row">
+
+                    <div class="col">
+                        <input type="submit" class="btn btn-info w-100 text-white" value="Submit" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i>Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PharmacyForms.Areas.Data;
 
 namespace PharmacyForms.Data;
 
-public class PharmacyAuthContext : IdentityDbContext<IdentityUser>
+public class PharmacyAuthContext : IdentityDbContext<ApplicationUser>
 {
     public PharmacyAuthContext(DbContextOptions<PharmacyAuthContext> options)
         : base(options)

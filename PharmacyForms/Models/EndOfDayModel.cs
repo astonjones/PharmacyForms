@@ -6,7 +6,7 @@ namespace PharmacyForms.Models
     public class EndOfDayModel
     {
         [Key]
-        public double Id {  get; set; }
+        public string ?Id {  get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime ModifyDate { get; set; }
         public string Email { get; set; }

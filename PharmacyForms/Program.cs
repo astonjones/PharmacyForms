@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PharmacyForms.Data;
 using Microsoft.AspNetCore.HttpOverrides;
+using PharmacyForms.Areas.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -11,7 +12,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 services.AddDbContext<PharmacyAuthContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 services.AddDbContext<ApplicationDbContext>(options =>options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<PharmacyAuthContext>();
 
 services.AddDatabaseDeveloperPageExceptionFilter();

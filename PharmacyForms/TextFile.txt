@@ -1,3 +1,4 @@
 ﻿Need to do for app deployment:
-- Copy database over to MySQL server
-- change database connection strings in app to point to MySQL server
+- Need to change ID to have Pharmacy Name in it. Else it will collide with other pharmacy IDs
+- Add pharmacyName to Identity Attributes
+- Add a new DB user for app that only has access to the pharmacyForms Applications

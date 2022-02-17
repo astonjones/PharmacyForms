@@ -11,8 +11,8 @@ using PharmacyForms.Data;
 namespace PharmacyForms.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220216173713_InitialFormTables")]
-    partial class InitialFormTables
+    [Migration("20220217163543_AddFormData")]
+    partial class AddFormData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,8 +23,8 @@ namespace PharmacyForms.Migrations.ApplicationDb
 
             modelBuilder.Entity("PharmacyForms.Models.EndOfDayModel", b =>
                 {
-                    b.Property<double>("Id")
-                        .HasColumnType("double");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<double>("AlternativeAdjudications")
                         .HasColumnType("double");

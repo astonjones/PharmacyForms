@@ -21,8 +21,8 @@ namespace PharmacyForms.Migrations.ApplicationDb
 
             modelBuilder.Entity("PharmacyForms.Models.EndOfDayModel", b =>
                 {
-                    b.Property<double>("Id")
-                        .HasColumnType("double");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<double>("AlternativeAdjudications")
                         .HasColumnType("double");

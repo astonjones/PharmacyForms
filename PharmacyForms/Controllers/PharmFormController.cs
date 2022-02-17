@@ -53,7 +53,6 @@ namespace PharmacyForms.Controllers
             obj.EntryDate = DateTime.Now;
             obj.ModifyDate = DateTime.Now;
 
-            Console.WriteLine(ModelState);
             if (ModelState.IsValid)
             {
                 _db.PatientCounts.Add(obj);
@@ -105,10 +104,77 @@ namespace PharmacyForms.Controllers
             return View(obj);
         }
 
+        //------------- END OF DAY RECORDS ---------------------
+
         //GET
         public IActionResult EndOfDayCreate()
         {
             return View();
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EndOfDayCreate(EndOfDayModel obj)
+        {
+            var dateId = DateTime.Now.ToString("dd-MM-yyyy"); //Used for the record IDs
+            //Checks if Start of Day record exists
+            if (_db.EndOfDay.Any(i => i.Id == dateId)) {
+                return RedirectToAction("EndOfDayDetails", new { id = dateId });
+            }
+            obj.Id = dateId;
+            obj.EntryDate = DateTime.Now;
+            obj.ModifyDate = DateTime.Now;
+
+            if (ModelState.IsValid)
+            {
+                _db.EndOfDay.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            Console.WriteLine("Error in create route");
+            return RedirectToAction("Index"); //NEED TO CHANGE ROUTE FOR CORRECT ERROR HANDLING
+        }
+
+        //GET - EDIT
+        public IActionResult EndOfDayEdit(string id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var obj = _db.EndOfDay.Find(id);
+            if (obj == null)
+                return NotFound();
+
+            return View(obj);
+        }
+
+        //POST - EDIT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EndOfDayEdit(EndOfDayModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                obj.ModifyDate = DateTime.Now;
+                _db.EndOfDay.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+
+        //Get - Details
+        public IActionResult EndOfDayDetails(string id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var obj = _db.EndOfDay.Find(id);
+            if (obj == null)
+                return NotFound();
+
+            return View(obj);
         }
     }
 }
