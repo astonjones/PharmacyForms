@@ -23,6 +23,14 @@ namespace PharmacyForms.Controllers
             return View(listHolder);
         }
 
+        public IActionResult yesterdayRecords()
+        {
+            IEnumerable<PatientCountModel> yesterdayPatientRecords = _db.PatientCounts.Where(i => i.EntryDate >= DateTime.Today.AddDays(-1) && i.EntryDate <= DateTime.Today && i.Email == User.Identity.Name);
+            IEnumerable<EndOfDayModel> yesterdayEndOfDayRecords = _db.EndOfDay.Where(i => i.EntryDate >= DateTime.Today.AddDays(-1) && i.EntryDate <= DateTime.Today && i.Email == User.Identity.Name);
+            ListHolderModel listHolder = new ListHolderModel(yesterdayPatientRecords, yesterdayEndOfDayRecords);
+            return View(listHolder);
+        }
+
         //GET
         public IActionResult PatientCountCreate()
         {
@@ -35,20 +43,21 @@ namespace PharmacyForms.Controllers
         public IActionResult PatientCountCreate(PatientCountModel obj)
         {
             var dateId = DateTime.Now.ToString("dd-MM-yyyy"); //Used for the record IDs
-                //Checks if Start of Day record exists
-            if (obj.TimeOfDay == "Start Of Day")
+            string PharmacyName = obj.PharmacyName.Replace(" ", "");//Get rid of spaces between pharmacies name
+            //Checks if Start of Day record exists
+            if (obj.TimeOfDay == "SOD")
             {
-                dateId += "SOD";
-                if (_db.PatientCounts.Any(i => i.Id == dateId)) { return RedirectToAction("PatientCountDetails", new { id = dateId }); }  //NEED TO CHANGE ROUTE FOR CORRECT ERROR HANDLING
+                dateId += $"SOD{PharmacyName}";
+                if (_db.PatientCounts.Any(i => i.Id == dateId)) { return RedirectToAction("PatientCountDetails", new { id = dateId }); }
                 obj.Id = dateId; //If record does not exist populate Id
             }
-            else if (obj.TimeOfDay == "End Of Day")
+            else if (obj.TimeOfDay == "EOD")
             {
-                dateId += "EOD";
-                if (_db.PatientCounts.Any(i => i.Id == dateId)) { return RedirectToAction("PatientCountDetails", new { id = dateId }); }  //NEED TO CHANGE ROUTE FOR CORRECT ERROR HANDLING
+                dateId += $"EOD{PharmacyName}";
+                if (_db.PatientCounts.Any(i => i.Id == dateId)) { return RedirectToAction("PatientCountDetails", new { id = dateId }); }
                 obj.Id = dateId; //If record does not exist populate Id
             }
-            else { return RedirectToAction("Index"); } //NEED TO CHANGE ROUTE FOR CORRECT ERROR HANDLING
+            else { return RedirectToAction("Index"); }
 
             obj.EntryDate = DateTime.Now;
             obj.ModifyDate = DateTime.Now;
@@ -59,8 +68,7 @@ namespace PharmacyForms.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            Console.WriteLine("Error in create route");
-            return RedirectToAction("Index"); //NEED TO CHANGE ROUTE FOR CORRECT ERROR HANDLING
+            return RedirectToAction("Index");
         }
 
         //GET - EDIT
@@ -118,10 +126,13 @@ namespace PharmacyForms.Controllers
         public IActionResult EndOfDayCreate(EndOfDayModel obj)
         {
             var dateId = DateTime.Now.ToString("dd-MM-yyyy"); //Used for the record IDs
+            string PharmacyName = obj.PharmacyName.Replace(" ", ""); //Get rid of spaces between pharmacies name
+            dateId = $"{dateId}{PharmacyName}";
             //Checks if Start of Day record exists
             if (_db.EndOfDay.Any(i => i.Id == dateId)) {
                 return RedirectToAction("EndOfDayDetails", new { id = dateId });
             }
+
             obj.Id = dateId;
             obj.EntryDate = DateTime.Now;
             obj.ModifyDate = DateTime.Now;
@@ -132,8 +143,7 @@ namespace PharmacyForms.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            Console.WriteLine("Error in create route");
-            return RedirectToAction("Index"); //NEED TO CHANGE ROUTE FOR CORRECT ERROR HANDLING
+            return RedirectToAction("Index");
         }
 
         //GET - EDIT

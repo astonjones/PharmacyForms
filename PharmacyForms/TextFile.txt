@@ -1,4 +1,6 @@
 ﻿Need to do for app deployment:
-- Need to change ID to have Pharmacy Name in it. Else it will collide with other pharmacy IDs
-- Add pharmacyName to Identity Attributes
 - Add a new DB user for app that only has access to the pharmacyForms Applications
+- Add 2FA to app
+- Change form validation popup to be more specific
+- Hardcode the Name for the Pharmacist
+- Give access to previous records, only up to 48 hours.

@@ -53,8 +53,8 @@
                 <div class="col-4">
                     <label asp-for="TimeOfDay"></label>
                     <select asp-for="TimeOfDay" class="form-control" disabled>
-                        <option value="Start Of Day">Start Of Day</option>
-                        <option value="End Of Day">End Of Day</option>
+                        <option value="SOD">Start Of Day</option>
+                        <option value="EOD">End Of Day</option>
                     </select>
                     <span asp-validation-for="TimeOfDay" class="text-danger"></span>
                 </div>
@@ -76,7 +76,7 @@
                         <a asp-action="PatientCountEdit" asp-route-Id="@Model.Id" class="btn btn-warning w-100 text-white">Edit Report</a>
                     </div>
                     <div class="col">
-                        <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i>Go Back</a>
+                        <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i>Home Page</a>
                     </div>
                 </div>
             </div>

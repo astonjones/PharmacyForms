@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PharmacyForms.Data;
 
@@ -10,9 +11,10 @@ using PharmacyForms.Data;
 namespace PharmacyForms.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220217182344_AddPNametoEOD")]
+    partial class AddPNametoEOD
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +48,7 @@ namespace PharmacyForms.Migrations.ApplicationDb
                     b.Property<DateTime>("EntryDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<double>("ExistingPatients")
+                    b.Property<double>("ExistingPatientCount")
                         .HasColumnType("double");
 
                     b.Property<string>("GroupName")
@@ -63,9 +65,6 @@ namespace PharmacyForms.Migrations.ApplicationDb
                         .HasColumnType("double");
 
                     b.Property<double>("InsuranceTerminatedCount")
-                        .HasColumnType("double");
-
-                    b.Property<double>("InternalTransfer")
                         .HasColumnType("double");
 
                     b.Property<DateTime>("ModifyDate")
@@ -99,9 +98,6 @@ namespace PharmacyForms.Migrations.ApplicationDb
                         .HasColumnType("double");
 
                     b.Property<double>("RxRefills")
-                        .HasColumnType("double");
-
-                    b.Property<double>("TotalExistingPatients")
                         .HasColumnType("double");
 
                     b.Property<double>("TransferredPatientCount")

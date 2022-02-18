@@ -1,5 +1,8 @@
 ﻿@model PharmacyForms.Models.PatientCountModel;
-@using System.Security.Principal
+@using Microsoft.AspNetCore.Identity
+@using PharmacyForms.Areas.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 <form method="post" asp-action="PatientCountEdit" class="d-flex justify-content-center">
     <div class="border p-3">
@@ -17,7 +20,7 @@
                 <div class="col-12">
                     <label asp-for="PharmacyName"></label>
                     <div asp-form="PharmacyName">
-                        <input asp-for="PharmacyName" class="form-control" />
+                        <input asp-for="PharmacyName" value=@UserManager.GetUserAsync(User).Result.PharmacyName class="form-control" readonly/>
                         <span asp-validation-for="PharmacyName" class="text-danger"></span>
                     </div>
                 </div>
@@ -27,7 +30,7 @@
                 <div class="col-12">
                     <label asp-for="Email"></label>
                     <div asp-form="Email">
-                        <input asp-for="Email" class="form-control" value=@User.Identity.Name readonly/>
+                        <input asp-for="Email" class="form-control" value=@UserManager.GetUserAsync(User).Result.Email readonly/>
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
@@ -47,7 +50,7 @@
                 <div class="col-4">
                     <label asp-for="TimeOfDay"></label>
                     <span asp-validation-for="TimeOfDay" class="text-danger"></span>
-                    <input asp-for="TimeOfDay" class="form-control" readonly/>
+                    <input asp-for="TimeOfDay" class="form-control" readonly>
                 </div>
             </div>
 
@@ -68,7 +71,7 @@
                         <input type="submit" class="btn btn-info w-100 text-white" value="Submit" />
                     </div>
                     <div class="col">
-                        <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i>Go Back</a>
+                        <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i>Home Page</a>
                     </div>
                 </div>
             </div>

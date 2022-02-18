@@ -1,20 +1,15 @@
 ﻿@model PharmacyForms.Models.ListHolderModel;
 
 <div class="row py-3">
-    <div class="col-lg-6 col-12"><h5>Need to fill out your reports for today:</h5></div>
+    <div class="col-lg-6 col-12"><h3>Here are your submissions for yesterday</h3></div>
     <div class="col-lg-6 col-12 justify-content-end d-flex">
-        <a class="btn btn-primary mx-2" asp-action="PatientCountCreate">Enter Patient Count Report</a>
-        <a class="btn btn-success mx-2" asp-action="EndOfDayCreate">Enter End of Day Report</a>
+        <a class="btn btn-secondary mx-2" asp-action="Index">Home Page</a>
     </div>
 </div>
 
 <div>
-    <div class="row justify-content-between">
-        <h3 class="col-lg-6 col-12">Here are your submissions for today</h3>
-        <a class="btn btn-outline btn-secondary col-lg-2 col-4" asp-action="yesterdayRecords">Yesterday Records</a>
-    </div>
     <div class="pt-5">
-        <h5>Here are your Patient Count submissions</h5>
+        <h5>Here are your Patient Count submissions for yesterday</h5>
         @if(Model.PatientCountList.Count() > 0)
         {
             <table class="table table-bordered table-striped">
@@ -54,12 +49,12 @@
         }
         else
         {
-            <p>You have not submitted any Patient Count Reports</p>
+            <p>You did not submit your patient count reports for yesterday.</p>
         }
     </div>
 
     <div class="pt-5">
-        <h5>Here is your End of Day Report</h5>
+        <h5>Here is your End of Day Report for yesterday</h5>
         @if(Model.EndOfDayList.Count() > 0)
         {
             <table class="table table-bordered table-striped">
@@ -99,7 +94,7 @@
         }
         else
         {
-            <p>You have not submitted your End of Day Report Yet</p>
+            <p>You have not submitted your End of Day Report for yesterday.</p>
         }
     </div>
 
