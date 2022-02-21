@@ -56,8 +56,8 @@ namespace PharmacyForms.Migrations.ApplicationDb
                     b.Property<double>("HighCopayCount")
                         .HasColumnType("double");
 
-                    b.Property<decimal>("InsuranceAdjudications")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<double>("InsuranceAdjudications")
+                        .HasColumnType("double");
 
                     b.Property<double>("InsuranceErrors")
                         .HasColumnType("double");
@@ -135,7 +135,8 @@ namespace PharmacyForms.Migrations.ApplicationDb
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
 
                     b.Property<int>("PatientCount")
                         .HasColumnType("int");

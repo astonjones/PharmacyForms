@@ -187,6 +187,9 @@ namespace PharmacyForms.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("PharmacistName")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("PharmacyName")
                         .HasColumnType("longtext");
 

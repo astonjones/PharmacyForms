@@ -41,6 +41,11 @@ namespace PharmacyForms.Areas.Identity.Pages.Account.Manage
             [Display(Name ="Pharmacy Name")]
             public string PharmacyName { get; set; }
 
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Pharmacist Name")]
+            public string PharmacistName { get; set; }
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -56,6 +61,7 @@ namespace PharmacyForms.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PharmacyName = user.PharmacyName,
+                PharmacistName = user.PharmacistName,
                 PhoneNumber = phoneNumber
             };
         }
@@ -100,6 +106,12 @@ namespace PharmacyForms.Areas.Identity.Pages.Account.Manage
             if (Input.PharmacyName != user.PharmacyName)
             {
                 user.PharmacyName = Input.PharmacyName;
+            }
+
+
+            if (Input.PharmacistName != user.PharmacistName)
+            {
+                user.PharmacistName = Input.PharmacistName;
             }
 
             await _userManager.UpdateAsync(user);

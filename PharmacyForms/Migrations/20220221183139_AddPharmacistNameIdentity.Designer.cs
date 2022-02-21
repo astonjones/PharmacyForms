@@ -11,8 +11,8 @@ using PharmacyForms.Data;
 namespace PharmacyForms.Migrations
 {
     [DbContext(typeof(PharmacyAuthContext))]
-    [Migration("20220217163307_UpdateIdentityCustomPName")]
-    partial class UpdateIdentityCustomPName
+    [Migration("20220221183139_AddPharmacistNameIdentity")]
+    partial class AddPharmacistNameIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -187,6 +187,9 @@ namespace PharmacyForms.Migrations
                         .HasColumnType("varchar(256)");
 
                     b.Property<string>("PasswordHash")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PharmacistName")
                         .HasColumnType("longtext");
 
                     b.Property<string>("PharmacyName")

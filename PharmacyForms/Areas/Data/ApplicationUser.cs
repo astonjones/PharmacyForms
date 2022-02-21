@@ -7,5 +7,7 @@ namespace PharmacyForms.Areas.Data
     {
         [PersonalData]
         public string ?PharmacyName { get; set; }
+        [PersonalData]
+        public string? PharmacistName { get; set; }
     }
 }

@@ -61,6 +61,11 @@ namespace PharmacyForms.Areas.Identity.Pages.Account
             public string PharmacyName {  get; set; }
 
             [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Pharmacy Name")]
+            public string PharmacistName { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -92,6 +97,7 @@ namespace PharmacyForms.Areas.Identity.Pages.Account
             {
                 var user = new ApplicationUser {
                     PharmacyName = Input.PharmacyName,
+                    PharmacistName = Input.PharmacistName,
                     UserName = Input.Email,
                     Email = Input.Email,
                 };

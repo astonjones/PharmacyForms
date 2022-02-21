@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PharmacyForms.Migrations.ApplicationDb
 {
-    public partial class AddFormData : Migration
+    public partial class ReEnterFormInfo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,6 +24,8 @@ namespace PharmacyForms.Migrations.ApplicationDb
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    PharmacyName = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     GroupName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ApprovedPatientCount = table.Column<double>(type: "double", nullable: false),
@@ -37,16 +39,18 @@ namespace PharmacyForms.Migrations.ApplicationDb
                     InsuranceTerminatedCount = table.Column<double>(type: "double", nullable: false),
                     OtherExceptions = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    InsuranceAdjudications = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    PatientExceptionCount = table.Column<double>(type: "double", nullable: false),
+                    TotalExistingPatients = table.Column<double>(type: "double", nullable: false),
+                    TransferredPatientCount = table.Column<double>(type: "double", nullable: false),
+                    InsuranceAdjudications = table.Column<double>(type: "double", nullable: false),
                     Cogs = table.Column<double>(type: "double", nullable: false),
                     RxRefills = table.Column<double>(type: "double", nullable: false),
                     RefillAdjudications = table.Column<double>(type: "double", nullable: false),
                     RefillCogs = table.Column<double>(type: "double", nullable: false),
                     AlternativeAdjudications = table.Column<double>(type: "double", nullable: false),
                     AlternativeCogs = table.Column<double>(type: "double", nullable: false),
-                    PatientExceptionCount = table.Column<double>(type: "double", nullable: false),
-                    ExistingPatientCount = table.Column<double>(type: "double", nullable: false),
-                    TransferredPatientCount = table.Column<double>(type: "double", nullable: false)
+                    InternalTransfer = table.Column<double>(type: "double", nullable: false),
+                    ExistingPatients = table.Column<double>(type: "double", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,7 +70,7 @@ namespace PharmacyForms.Migrations.ApplicationDb
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Email = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
+                    Name = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TimeOfDay = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),

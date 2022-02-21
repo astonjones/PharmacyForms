@@ -1,6 +1,3 @@
 ﻿Need to do for app deployment:
 - Add a new DB user for app that only has access to the pharmacyForms Applications
 - Add 2FA to app
-- Change form validation popup to be more specific
-- Hardcode the Name for the Pharmacist
-- Give access to previous records, only up to 48 hours.

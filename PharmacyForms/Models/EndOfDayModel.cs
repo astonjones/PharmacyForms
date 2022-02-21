@@ -11,7 +11,8 @@ namespace PharmacyForms.Models
         public DateTime ModifyDate { get; set; }
         public string Email { get; set; }
 
-        [Display(Name = "Username")]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "Please enter your name")]
         public string Name {  get; set; }
         public string PharmacyName {  get; set; }
         public string GroupName { get; set; }
@@ -56,7 +57,7 @@ namespace PharmacyForms.Models
         public double TransferredPatientCount { get; set; }
 
         [Display(Name = "Adjudication - (Total Amount of Insurance Paid")]
-        public decimal InsuranceAdjudications { get; set; }
+        public double InsuranceAdjudications { get; set; }
 
         [Display(Name = "Cost of Goods Sold - (Acquisition Cost A.A.C")]
         public double Cogs { get; set; }

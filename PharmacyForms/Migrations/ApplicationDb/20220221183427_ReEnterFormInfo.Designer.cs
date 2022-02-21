@@ -11,8 +11,8 @@ using PharmacyForms.Data;
 namespace PharmacyForms.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220217182344_AddPNametoEOD")]
-    partial class AddPNametoEOD
+    [Migration("20220221183427_ReEnterFormInfo")]
+    partial class ReEnterFormInfo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,7 +48,7 @@ namespace PharmacyForms.Migrations.ApplicationDb
                     b.Property<DateTime>("EntryDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<double>("ExistingPatientCount")
+                    b.Property<double>("ExistingPatients")
                         .HasColumnType("double");
 
                     b.Property<string>("GroupName")
@@ -58,13 +58,16 @@ namespace PharmacyForms.Migrations.ApplicationDb
                     b.Property<double>("HighCopayCount")
                         .HasColumnType("double");
 
-                    b.Property<decimal>("InsuranceAdjudications")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<double>("InsuranceAdjudications")
+                        .HasColumnType("double");
 
                     b.Property<double>("InsuranceErrors")
                         .HasColumnType("double");
 
                     b.Property<double>("InsuranceTerminatedCount")
+                        .HasColumnType("double");
+
+                    b.Property<double>("InternalTransfer")
                         .HasColumnType("double");
 
                     b.Property<DateTime>("ModifyDate")
@@ -100,6 +103,9 @@ namespace PharmacyForms.Migrations.ApplicationDb
                     b.Property<double>("RxRefills")
                         .HasColumnType("double");
 
+                    b.Property<double>("TotalExistingPatients")
+                        .HasColumnType("double");
+
                     b.Property<double>("TransferredPatientCount")
                         .HasColumnType("double");
 
@@ -131,7 +137,8 @@ namespace PharmacyForms.Migrations.ApplicationDb
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
 
                     b.Property<int>("PatientCount")
                         .HasColumnType("int");
