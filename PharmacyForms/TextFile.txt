@@ -1,3 +1,4 @@
 ﻿Need to do for app deployment:
 - Add a new DB user for app that only has access to the pharmacyForms Applications
-- Add 2FA to app
+- Implement new view changes according to email
+- Limit edittable options associated with users profile
