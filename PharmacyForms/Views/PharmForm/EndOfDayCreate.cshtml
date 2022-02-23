@@ -37,6 +37,16 @@
 
             <div class="form-group row py-3">
                 <div class="col-12">
+                    <label asp-for="EntryDate"></label>
+                    <div asp-form="EntryDate">
+                        <input class="form-control" value="Date is Auto-populated upon form submission" disabled/>
+                        <span asp-validation-for="EntryDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
                     <label asp-for="PharmacyName"></label>
                     <div asp-form="PharmacyName">
                         <input asp-for="PharmacyName" value=@UserManager.GetUserAsync(User).Result.PharmacyName class="form-control" readonly/>
@@ -180,10 +190,40 @@
 
             <div class="form-group row py-3">
                 <div class="col-12">
-                    <label asp-for="TransferredPatientCount"></label>
-                    <div asp-form="TransferredPatientCount">
-                        <input asp-for="TransferredPatientCount" class="form-control"/>
-                        <span asp-validation-for="TransferredPatientCount" class="text-danger"></span>
+                    <label asp-for="ExistingPatientAdjudications"></label>
+                    <div asp-form="ExistingPatientAdjudications">
+                        <input asp-for="ExistingPatientAdjudications" class="form-control"/>
+                        <span asp-validation-for="ExistingPatientAdjudications" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="TransferredInPatientCount"></label>
+                    <div asp-form="TransferredInPatientCount">
+                        <input asp-for="TransferredInPatientCount" class="form-control"/>
+                        <span asp-validation-for="TransferredInPatientCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="TransferredOutPatientCount"></label>
+                    <div asp-form="TransferredOutPatientCount">
+                        <input asp-for="TransferredOutPatientCount" class="form-control"/>
+                        <span asp-validation-for="TransferredOutPatientCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="TransferredInAdjudications"></label>
+                    <div asp-form="TransferredInAdjudications">
+                        <input asp-for="TransferredInAdjudications" class="form-control"/>
+                        <span asp-validation-for="TransferredInAdjudications" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -240,6 +280,16 @@
 
             <div class="form-group row py-3">
                 <div class="col-12">
+                    <label asp-for="AlternativeRefillPatients"></label>
+                    <div asp-form="AlternativeRefillPatients">
+                        <input asp-for="AlternativeRefillPatients" class="form-control"/>
+                        <span asp-validation-for="AlternativeRefillPatients" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
                     <label asp-for="AlternativeAdjudications"></label>
                     <div asp-form="AlternativeAdjudications">
                         <input asp-for="AlternativeAdjudications" class="form-control"/>
@@ -254,26 +304,6 @@
                     <div asp-form="AlternativeCogs">
                         <input asp-for="AlternativeCogs" class="form-control"/>
                         <span asp-validation-for="AlternativeCogs" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group row py-3">
-                <div class="col-12">
-                    <label asp-for="InternalTransfer"></label>
-                    <div asp-form="InternalTransfer">
-                        <input asp-for="InternalTransfer" class="form-control"/>
-                        <span asp-validation-for="InternalTransfer" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group row py-3">
-                <div class="col-12">
-                    <label asp-for="ExistingPatients"></label>
-                    <div asp-form="ExistingPatients">
-                        <input asp-for="ExistingPatients" class="form-control"/>
-                        <span asp-validation-for="ExistingPatients" class="text-danger"></span>
                     </div>
                 </div>
             </div>

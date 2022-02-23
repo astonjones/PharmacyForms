@@ -65,16 +65,16 @@
             <thead>
                 <tr>
                     <th>
-                        Name
+                        Modify Date
                     </th>
                     <th>
                         Approved Patient Count
                     </th>
                     <th>
-                        Modify Date
+                        Cogs
                     </th>
                     <th>
-                        Exisiting Patient Count
+                        Insurance Errors
                     </th>
                     <th></th>
                 </tr>
@@ -83,10 +83,10 @@
                 @foreach (var obj in Model.EndOfDayList)
                 {
                     <tr>
-                        <td>@obj.Name</td>
-                        <td>@obj.ApprovedPatientCount</td>
                         <td>@obj.ModifyDate</td>
-                        <td>@obj.TotalExistingPatients</td>
+                        <td>@obj.ApprovedPatientCount</td>
+                        <td>@obj.Cogs</td>
+                        <td>@obj.InsuranceErrors</td>
                         <td>
                             <a asp-controller="PharmForm" asp-route-Id="@obj.Id" asp-action="EndOfDayDetails" class="mx-1">Details</a> |
                             <a asp-controller="PharmForm" asp-route-Id="@obj.Id" asp-action="EndOfDayEdit" class="mx-1">Edit</a>

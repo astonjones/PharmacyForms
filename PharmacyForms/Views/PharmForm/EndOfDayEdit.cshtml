@@ -9,13 +9,12 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div> <!-- popup for form validation -->
 
         <div class="form-group row">
-            <h2 class="text-info pl-3">End Of Day Form</h2>
-            <p>Please fill out the form with the necessary info.</p>
+            <h2 class="text-info pl-3">End Of Day Form - Edit</h2>
+            <p>Here you can edit your existing info.</p>
         </div>
 
         <!--Start of inputs -->
-        <input asp-for="EntryDate" class="form-control d-none" readonly/>
-                <div>
+            <div>
             <div class="form-group row py-3">
                 <div class="col-12">
                     <label asp-for="Email"></label>
@@ -30,8 +29,19 @@
                 <div class="col-12">
                     <label asp-for="Name"></label>
                     <div>
-                        <input asp-for="Name" class="form-control" />
+                        <input asp-for="Name" class="form-control" value=@UserManager.GetUserAsync(User).Result.PharmacistName readonly/>
                         <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="EntryDate"></label>
+                    <div asp-form="EntryDate">
+                        <input class="form-control" value="Date is Auto-populated upon form submission" disabled/>
+                        <input asp-for="EntryDate" class="form-control d-none" readonly/>
+                        <span asp-validation-for="EntryDate" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -181,10 +191,40 @@
 
             <div class="form-group row py-3">
                 <div class="col-12">
-                    <label asp-for="TransferredPatientCount"></label>
-                    <div asp-form="TransferredPatientCount">
-                        <input asp-for="TransferredPatientCount" class="form-control"/>
-                        <span asp-validation-for="TransferredPatientCount" class="text-danger"></span>
+                    <label asp-for="ExistingPatientAdjudications"></label>
+                    <div asp-form="ExistingPatientAdjudications">
+                        <input asp-for="ExistingPatientAdjudications" class="form-control"/>
+                        <span asp-validation-for="ExistingPatientAdjudications" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="TransferredInPatientCount"></label>
+                    <div asp-form="TransferredInPatientCount">
+                        <input asp-for="TransferredInPatientCount" class="form-control"/>
+                        <span asp-validation-for="TransferredInPatientCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="TransferredOutPatientCount"></label>
+                    <div asp-form="TransferredOutPatientCount">
+                        <input asp-for="TransferredOutPatientCount" class="form-control"/>
+                        <span asp-validation-for="TransferredOutPatientCount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
+                    <label asp-for="TransferredInAdjudications"></label>
+                    <div asp-form="TransferredInAdjudications">
+                        <input asp-for="TransferredInAdjudications" class="form-control"/>
+                        <span asp-validation-for="TransferredInAdjudications" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -241,6 +281,16 @@
 
             <div class="form-group row py-3">
                 <div class="col-12">
+                    <label asp-for="AlternativeRefillPatients"></label>
+                    <div asp-form="AlternativeRefillPatients">
+                        <input asp-for="AlternativeRefillPatients" class="form-control"/>
+                        <span asp-validation-for="AlternativeRefillPatients" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row py-3">
+                <div class="col-12">
                     <label asp-for="AlternativeAdjudications"></label>
                     <div asp-form="AlternativeAdjudications">
                         <input asp-for="AlternativeAdjudications" class="form-control"/>
@@ -255,26 +305,6 @@
                     <div asp-form="AlternativeCogs">
                         <input asp-for="AlternativeCogs" class="form-control"/>
                         <span asp-validation-for="AlternativeCogs" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group row py-3">
-                <div class="col-12">
-                    <label asp-for="InternalTransfer"></label>
-                    <div asp-form="InternalTransfer">
-                        <input asp-for="InternalTransfer" class="form-control"/>
-                        <span asp-validation-for="InternalTransfer" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group row py-3">
-                <div class="col-12">
-                    <label asp-for="ExistingPatients"></label>
-                    <div asp-form="ExistingPatients">
-                        <input asp-for="ExistingPatients" class="form-control"/>
-                        <span asp-validation-for="ExistingPatients" class="text-danger"></span>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PharmacyForms.Data;
 
@@ -10,9 +11,10 @@ using PharmacyForms.Data;
 namespace PharmacyForms.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220222234820_NewChangetoEODModel")]
+    partial class NewChangetoEODModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,6 +54,9 @@ namespace PharmacyForms.Migrations.ApplicationDb
                     b.Property<double>("ExistingPatientAdjudications")
                         .HasColumnType("double");
 
+                    b.Property<double>("ExistingPatients")
+                        .HasColumnType("double");
+
                     b.Property<string>("GroupName")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -66,6 +71,9 @@ namespace PharmacyForms.Migrations.ApplicationDb
                         .HasColumnType("double");
 
                     b.Property<double>("InsuranceTerminatedCount")
+                        .HasColumnType("double");
+
+                    b.Property<double>("InternalTransfer")
                         .HasColumnType("double");
 
                     b.Property<DateTime>("ModifyDate")
@@ -111,6 +119,9 @@ namespace PharmacyForms.Migrations.ApplicationDb
                         .HasColumnType("double");
 
                     b.Property<double>("TransferredOutPatientCount")
+                        .HasColumnType("double");
+
+                    b.Property<double>("TransferredPatientCount")
                         .HasColumnType("double");
 
                     b.Property<double>("WrongDOBCount")

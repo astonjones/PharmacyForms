@@ -1,4 +1,7 @@
 ﻿Need to do for app deployment:
 - Add a new DB user for app that only has access to the pharmacyForms Applications
-- Implement new view changes according to email
-- Limit edittable options associated with users profile
+
+
+- Update EOD Model
+	- Make sure to change the EOD model matches stakeholder requirements.
+	- Update the view to implement all attributes and match old forms
