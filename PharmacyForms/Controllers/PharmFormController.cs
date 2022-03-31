@@ -43,8 +43,8 @@ namespace PharmacyForms.Controllers
         public IActionResult PatientCountCreate(PatientCountModel obj)
         {
             var dateId = DateTime.Now.ToString("dd-MM-yyyy"); //Used for the record IDs
-            string PharmacyName = obj.PharmacyName.Replace(" ", "");//Get rid of spaces between pharmacies name
-            //Checks if Start of Day record exists
+            string PharmacyName = obj.PharmacyName.Replace(" ", "");
+            //Checks if Start of Day, Throughout day, and End of Day record exists if so then redirect to details
             if (obj.TimeOfDay == "SOD")
             {
                 dateId += $"SOD{PharmacyName}";
@@ -54,6 +54,12 @@ namespace PharmacyForms.Controllers
             else if (obj.TimeOfDay == "EOD")
             {
                 dateId += $"EOD{PharmacyName}";
+                if (_db.PatientCounts.Any(i => i.Id == dateId)) { return RedirectToAction("PatientCountDetails", new { id = dateId }); }
+                obj.Id = dateId; //If record does not exist populate Id
+            }
+            else if (obj.TimeOfDay == "TD")
+            {
+                dateId += $"TD{PharmacyName}";
                 if (_db.PatientCounts.Any(i => i.Id == dateId)) { return RedirectToAction("PatientCountDetails", new { id = dateId }); }
                 obj.Id = dateId; //If record does not exist populate Id
             }
